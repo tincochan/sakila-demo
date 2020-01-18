@@ -3,18 +3,10 @@ package com.sakila.demo.po;
 import java.sql.Timestamp;
 
 public class Actor {
-    private Integer actorId;
     private String firstName;
     private String LastName;
-    private Timestamp LastUpdate;
 
-    public Integer getActorId() {
-        return actorId;
-    }
-
-    public void setActorId(Integer actorId) {
-        this.actorId = actorId;
-    }
+    private String films;
 
     public String getFirstName() {
         return firstName;
@@ -32,11 +24,11 @@ public class Actor {
         LastName = lastName;
     }
 
-    public Timestamp getLastUpdate() {
-        return LastUpdate;
+    public String getFilms() {
+        return films;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
-        LastUpdate = lastUpdate;
+    public void setFilms(String films) {
+        this.films = films;
     }
 }

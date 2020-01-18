@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sakila.demo.dao.SakilaDao">
+
+    <!--根据演员查询所出演电影数目-->
+    <select id="queryFilmNumByActor" resultType="com.sakila.demo.po.Actor" >
+        SELECT a.first_name as firstName, a.last_name as lastName, count(*) films
+        FROM actor AS a
+        JOIN film_actor AS fa
+        ON a.actor_id =fa.actor_id
+        WHERE 1=1
+        <if test=" firstName != null and firstName !='' ">
+            AND first_name = #{firstName, jdbcType=VARCHAR}
+        </if>
+        <if test=" lastName != null and lastName !='' ">
+            AND last_name = #{lastName, jdbcType=VARCHAR}
+        </if>
+        GROUP BY a.actor_id, a.first_name, a.last_name
+        ORDER BY films DESC
+	</select>
+</mapper>
