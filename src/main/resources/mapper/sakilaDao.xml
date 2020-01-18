@@ -33,4 +33,18 @@
             AND a.last_name = #{lastName, jdbcType=VARCHAR}
         </if>
     </select>
+
+    <!--按日期统计租赁店的收入-->
+    <select id="queryRevenuesByDates" resultType="com.sakila.demo.po.Revenues">
+        SELECT payment_date as paymentDate, amount, sum(amount) OVER (ORDER BY payment_date) as total
+        FROM (
+            SELECT CAST(payment_date AS DATE) AS payment_date, SUM(amount) AS amount
+            FROM payment
+            GROUP BY CAST(payment_date AS DATE)
+        ) p
+        WHERE 1=1
+        <if test="beginDate != null and beginDate != ''">AND payment_date <![CDATA[>=]]> #{beginDate}</if>
+        <if test="endDate != null and endDate != ''">AND payment_date <![CDATA[<=]]>#{endDate}</if>
+        ORDER BY payment_date;
+    </select>
 </mapper>

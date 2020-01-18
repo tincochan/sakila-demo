@@ -6,10 +6,12 @@ import com.sakila.demo.dao.SakilaDao;
 import com.sakila.demo.po.Actor;
 import com.sakila.demo.po.ActorFilms;
 import com.sakila.demo.po.FilmActor;
+import com.sakila.demo.po.Revenues;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +28,8 @@ public class SakilaService {
         return this.sakilaDao.queryFilmByActor( firstName, lastName);
     }
 
-
+    public List<Revenues> queryRevenuesByDates(Date beginDate, Date endDate){
+        return this.sakilaDao.queryRevenuesByDates( beginDate, endDate);
+    }
 
 }

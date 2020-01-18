@@ -1,7 +1,9 @@
 package com.sakila.demo.controller;
 
+import com.sakila.demo.dto.QueryRevenues;
 import com.sakila.demo.po.Actor;
 import com.sakila.demo.po.ActorFilms;
+import com.sakila.demo.po.Revenues;
 import com.sakila.demo.service.SakilaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,10 @@ public class SakilaController {
     @PostMapping("/queryFilmByActor")
     public List<ActorFilms> queryFilmByActor (@RequestBody ActorFilms dto){
         return this.sakilaService.queryFilmByActor( dto.getFirstName(), dto.getLastName());
+    }
+
+    @PostMapping("/queryRevenuesByDate")
+    public List<Revenues> queryRevenuesByDate (@RequestBody QueryRevenues dto){
+        return this.sakilaService.queryRevenuesByDates( dto.getBeginDate(), dto.getEndDate());
     }
 }
