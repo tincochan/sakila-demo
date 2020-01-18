@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class film {
+public class Film {
     private Integer filmId;
     private String title;
     private String description;

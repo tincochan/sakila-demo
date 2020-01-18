@@ -2,7 +2,7 @@ package com.sakila.demo.po;
 
 import java.sql.Timestamp;
 
-public class actor {
+public class Actor {
     private Integer actorId;
     private String firstName;
     private String LastName;
