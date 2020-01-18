@@ -18,4 +18,19 @@
         GROUP BY a.actor_id, a.first_name, a.last_name
         ORDER BY films DESC
 	</select>
+
+    <!--根据演员查询所出演的相关电影-->
+    <select id="queryFilmByActor" resultType="com.sakila.demo.po.ActorFilms">
+        SELECT a.first_name as firstName, a.last_name as lastName, f.title
+        FROM actor As a
+        LEFT JOIN film_actor fa on a.actor_id = fa.actor_id
+        LEFT JOIN film f on f.film_id = fa.film_id
+        WHERE 1=1
+        <if test=" firstName != null and firstName !='' ">
+            AND a.first_name = #{firstName, jdbcType=VARCHAR}
+        </if>
+        <if test=" lastName != null and lastName !='' ">
+            AND a.last_name = #{lastName, jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

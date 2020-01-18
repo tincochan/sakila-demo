@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sakila.demo.dao.SakilaDao;
 import com.sakila.demo.po.Actor;
+import com.sakila.demo.po.ActorFilms;
+import com.sakila.demo.po.FilmActor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,10 @@ public class SakilaService {
 
     public List<Actor> queryFilmNumByActor(String firstName, String lastName){
         return this.sakilaDao.queryFilmNumByActor( firstName, lastName );
+    }
+
+    public List<ActorFilms> queryFilmByActor(String firstName, String lastName){
+        return this.sakilaDao.queryFilmByActor( firstName, lastName);
     }
 
 
